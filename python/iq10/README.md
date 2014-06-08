@@ -1,0 +1,1 @@
+The telephone problem. Find all char strings that can represent phone numbers in the us. eg. of ten phone numbers like 1800-LAWYWERS are common. given a numberic number find all such string combinations and write them to a file. 
