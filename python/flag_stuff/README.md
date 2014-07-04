@@ -1,8 +1,9 @@
 Mike is a famous traveler. He visits about 100 countries a year and buys the flag of each country he has been to.
 Mike knows, that there are some flags, that correspond to one pattern, but colored in different ways. E.g. the flag of Ireland(link) and the flag of Belgium(link). In this problem we consider only five 2,2cm✕1,1cm patterns of flags
-<img src = "i.imgur.com/Of9G66t.jpg"></img>
 There are N different colors available to paint the flags and the colors are denoted by integers from 1 to N.
 Mike wants you to count the number of different well-painted flags. We call a flag well-painted if it's made according to the following algorithm:
+ 
+ <img src = "http://i.imgur.com/Of9G66t.jpg"></img>
  
 Pick up one of the flag patterns considered above;
 Paint each one-colored polygon on the pattern in a color encoded by an integer from 1 to N. Different colors are encoded with different integers. If two different one-colored polygons share a common side(not corner), than they must be painted in different colors. In any other case they can be painted in both equal and different colors.
