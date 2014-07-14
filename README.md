@@ -1,1 +1,2 @@
-fdjsndCoding random practice projects in Python , Ruby and Scala. The projects i am doing are in Karan's repository that I have forked here
+Solutions to Some project solutions from /karan 's project repository. 
+Some code is solution to codechef, topcode, codeeval, SPOJ , Project Euler exercises.
