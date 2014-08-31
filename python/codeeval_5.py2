@@ -1,0 +1,13 @@
+import sys
+test_cases  = open(sys.argv[1], 'r').readlines()
+for test in test_cases:
+  lower_case_count = 0
+  upper_case_count = 0
+  test = test.strip()
+  for char in test:
+    if ord(char) in range(97, 123):
+      lower_case_count += 1
+    elif ord(char) in range(65, 91):
+      upper_case_count += 1
+  print "lowercase: %.2f uppercase: %.2f"\
+         %(lower_case_count * 100 / float(len(test)), upper_case_count * 100 / float(len(test)))

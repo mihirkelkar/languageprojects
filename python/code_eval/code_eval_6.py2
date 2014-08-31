@@ -1,0 +1,14 @@
+import sys
+
+test_cases = open(sys.argv[1], 'r').readlines()
+for test in test_cases:
+  words, numbers = test.strip().split(';')
+  words = words.split()
+  numbers = numbers.split()
+  print sorted(zip(words, numbers), key = lambda x: x[1])
+  final_list = ' '.join(ii[0] for ii in sorted(zip(words, numbers), key = lambda x: x[1]))
+  if len(numbers) < len(words):
+    for ii in range(len(numbers) ,len(words)):
+      final_list += ' '
+      final_list += words[ii]
+      print final_list
