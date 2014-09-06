@@ -1,0 +1,7 @@
+#!/usr/bin/python
+import itertools
+import sys
+
+fileObj = open(sys.argv[1]).readlines()
+for ii in fileObj:
+  print ",".join(sorted(["".join(ii) for ii in itertools.permutations(ii.strip())]))
