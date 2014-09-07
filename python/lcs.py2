@@ -1,0 +1,58 @@
+import sys
+def find_lcs(word_one, word_two):
+  match_list = []
+  grid = [[0] * len(word_one) for ii in range(len(word_two))]
+  for ii in range(len(word_two)):
+    for jj in range(len(word_one)):
+      if word_two.lower()[ii] == word_one.lower()[jj]:
+        match_list.append([ii, jj])
+        if ii == 0 or jj == 0:
+          grid[ii][jj] = 1
+        else:
+          grid[ii][jj] = grid[ii - 1][jj - 1]  + 1
+      else:
+        if ii == 0 and jj == 0:
+          grid[ii][jj] = 0
+        elif ii == 0 and jj != 0:
+          grid[ii][jj] = max(0, grid[ii][jj - 1])
+        elif jj == 0 and ii != 0:
+          grid[ii][jj] = max(0, grid[ii - 1][jj])
+        else:
+          grid[ii][jj] = max(grid[ii - 1][jj], grid[ii][jj - 1])
+  #for ii in grid:
+  #  print ii
+  find_max(grid, match_list, word_one, word_two)
+          
+def find_max(grid, match_list, word_one, word_two):
+  string =""
+  #print "Entered the find max function"
+  ii = len(word_two) - 1
+  jj = len(word_one) - 1
+  while ii >= 0 and jj >= 0:
+    #print match_list
+    #print ii, jj
+    if [ii, jj] in match_list:
+      #print "Match found"
+      string += word_two[ii]
+      ii -= 1
+      jj -= 1
+    else:
+      if ii != 0 and jj != 0:
+        if grid[ii - 1][jj] == grid[ii][jj]:
+          ii -= 1
+        else:
+          jj -= 1
+      else:
+        if ii == 0:
+          jj -= 1
+        else:
+          ii -= 1
+  print string[::-1]
+
+def main():
+  fp  =open(sys.argv[1], 'r').readlines()
+  for ii in fp:
+    x, y = ii.strip().split(";")
+    find_lcs(x, y)
+
+main()

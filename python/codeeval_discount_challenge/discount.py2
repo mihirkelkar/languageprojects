@@ -1,0 +1,49 @@
+def calculate_score(name, product):
+  print "This function is called"
+  name = name.replace(" ","")
+  product = product.replace(" ","")
+  score = 0
+  num_count = 0
+  for ii in ['a', 'e', 'i', 'o', 'u', 'y']:
+    score += product.lower().count(ii)
+  for ii in range(33,65):
+    num_count += product.lower().count(chr(ii))       
+  if len(product) % 2 == 0:
+       score *= 1.5
+  else:
+    score = len(product) - score - num_count
+
+  for ii in range(2, min(len(name), len(product))):
+    if len(name) % ii == 0 and len(product) % ii == 0:
+      score *= 1.5
+      break
+  #print score
+  return score
+
+def find_scores(count, pl):
+  global names
+  if count > 0:
+    score_list = list()
+    for ii in range(len(pl)):
+      #print "Entering loop"
+      score_lower_level = find_scores(count - 1, pl[:ii] + pl[ii + 1:])
+      #print score_lower_level
+      for el in score_lower_level:
+        score_list += [calculate_score(names[count - 1], pl[ii]) + el]
+    #print "This is the score list from %s" %(names[count - 1])
+    #print score_list
+    return score_list 
+  else:
+    #print "Returning a list filled with zeroes"
+    return [0] * (len(pl) + 1)
+
+
+
+names = list(reversed(["Jack Abraham","John Evans","Ted Dziuba"]))
+#print len(names)
+def main():
+  global names
+  pl = ["iPad 2 - 4-pack","Girl Scouts Thin Mints","Nerf Crossbow"]  
+  print "%.2f" %max(find_scores(len(names),pl))
+
+main()
