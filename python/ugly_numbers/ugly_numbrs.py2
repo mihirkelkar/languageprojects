@@ -15,22 +15,18 @@ def depth(number):
   else:
     return []
 
-def find_leading_octal_conflicts(num_string):
-  for ii in re.findall(r"[+-]0\d+", num_string):
-    num_string = num_string.replace(ii, ii[1])
-  return num_string 
+#def find_leading_octal_conflicts(num_string):
+#  for ii in re.findall(r"[+-]0\d+", num_string):
+#    num_string = num_string.replace(ii, ii[1])
+#  return num_string 
     
-def find_if_ugly(num_string):
-  num_string = find_leading_octal_conflicts(num_string)
-  number = eval(num_string)
+def find_if_ugly(number):
+  #print number , eval(number)
+  number = eval(number)
   for ii in [2,3,5,7]:
     if number % ii == 0:
-      #print num_string
-      #print "========="
-      #print number
-      #print "*********"
-      return 1
-  return 0
+      return True
+  return False
 
 def ugly_function(number):
   neg = 0
@@ -50,11 +46,18 @@ def ugly_function(number):
     if neg == 1:
       new_string = '-' + new_string
     new_string = new_string.replace(" ","")
-    new_string = re.sub("^0","",new_string)
+    if "+" not in new_string and "-" not in new_string:
+      new_string = re.sub("^0","",new_string)
+    try:
+      match = re.match("([+-]0)\d+", new_string)
+      new_string = new_string.replace(match.group(1), match.group(1)[0])
+    except:
+      pass
     ugly_list.append(new_string)
-    #print ugly_list
+  #print len(list(set(ugly_list)))
   for ii in list(set(ugly_list)):
-    ugly_count += find_if_ugly(ii)
+    if find_if_ugly(ii):
+      ugly_count += 1
   print ugly_count
 
 def main():
