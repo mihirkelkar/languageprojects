@@ -1,0 +1,33 @@
+import sys
+
+def printspiral(horend, horstr, verend, verstr, grid):
+	while((horstr <= horend) and (verstr <= verend)):
+		for i in range(horstr, horend):
+			print grid[verstr][i],
+		horstr += 1
+		for i in range(verstr, verend + 1):
+			print grid[i][horend],
+		horend -= 1
+		for i in range(horend, horstr - 2, -1):
+			print grid[verend][i],
+		verend -= 1
+		for i in range(verend , verstr, -1):
+			print grid[i][horstr - 1],
+		verstr += 1
+def main():
+  fp = open(sys.argv[1], 'r').readlines()
+  for ii in fp:
+    verend, horend, elements = ii.strip().split(";")
+    elements = elements.split()
+  counter = 0
+  grid = [[0] * int(horend) for ii in range(int(verend))]
+  #print grid
+  for ii in range(int(verend)):
+    for jj in range(int(horend)):
+      grid[ii][jj] = elements[counter]
+      counter += 1
+  #print grid 
+  printspiral(int(horend) - 1, 0, int(verend) - 1, 0, grid)      
+
+if __name__ == "__main__":
+  main()
