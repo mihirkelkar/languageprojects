@@ -1,0 +1,25 @@
+import sys
+
+def number_pairs(list_number, number):
+  number_dict = {}
+  for ii in list_number:
+    number_dict[ii] = ii - number
+  join_list = list()
+  for ii in list_number:
+    try:
+      if number_dict[ii] * -1 in number_dict.keys():
+        string = str(ii) + "," + str(number_dict[ii] * -1)
+        join_list.append(string)
+        del number_dict[number_dict[ii] * -1]
+    except:
+      pass
+  if join_list:
+    print ";".join(join_list)
+  else:
+    print "NULL"
+
+for lines in open(sys.argv[1], 'r').readlines():
+  list_lines, number = lines.strip().split(";")
+  list_lines = [int(ii) for ii in list_lines.split(",")]
+  number = int(number)
+  number_pairs(list_lines, number)
