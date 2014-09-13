@@ -1,0 +1,18 @@
+import sys
+
+def check_if_rotation(string_one, string_two):
+  if(len(string_one) != len(string_two)):
+    return False
+  else:
+    total_string = string_one + string_two
+    if string_two in total_string:
+      return True
+    return False
+
+def main():
+  fp = open(sys.argv[1], 'r').readlines()
+  for ii in fp:
+    x, y = ii.strip().split(",")
+    print check_if_rotation(x, y)
+
+main()   
