@@ -1,0 +1,33 @@
+import sys
+
+class String_sub(object):
+  #The idea is I split the constitutent list string into a list.
+# Find perfectmatches in it and if there is one I replace the start letter by the whole replacement and blank out the rest. 
+  def __init__(self, string):
+    self.array = list(string.strip())
+  
+  def match(self, orig, index):
+    if index + len(orig) > len(self.array):
+      return False
+    for ii in xrange(len(orig)):
+      if self.array[index + ii] != orig[ii]:
+        return False
+    return True
+  
+  def replace(self,orig, repl):
+    for ii in xrange(len(self.array)):
+      if self.match(orig, ii):
+        self.array[ii] = "*" + repl + "*"
+        for jj in range(1, len(orig)):
+          self.array[ii + jj]  = ""
+
+  def print_it(self):
+    return "".join(self.array).replace("*","")
+
+for elem in open(sys.argv[1], 'r').readlines():
+  string, repllist = elem.strip().split(";")
+  st = String_sub(string)
+  repllist = repllist.split(",")
+  for ii in range(0, len(repllist), 2):
+    st.replace(repllist[ii], repllist[ii + 1])    
+  print st.print_it()
