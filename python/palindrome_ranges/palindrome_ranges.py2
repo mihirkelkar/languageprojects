@@ -26,7 +26,7 @@ def is_palindrome(number):
 def palindrome_range(left, right):
   palindrome_list = list()
   for ii in xrange(left, right + 1):
-    palindrome_list.append(str(ii))
+    palindrome_list.append(is_palindrome(str(ii)))
   return palindrome_list  
 
 def count_palindrome_ranges(palindrome_list):

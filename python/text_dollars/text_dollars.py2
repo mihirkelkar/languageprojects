@@ -1,0 +1,79 @@
+import sys
+
+"""
+You are given a positive integer number. Convert the Number into its corresponding text representation
+"""
+WORD_DICT = {
+    1: "One",
+    2: "Two",
+    3: "Three",
+    4: "Four",
+    5: "Five",
+    6: "Six",
+    7: "Seven",
+    8: "Eight",
+    9: "Nine",
+   10: "Ten",
+   11: "Eleven",
+   12: "Twelve",
+   13: "Thirteen",
+   14: "Fourteen",
+   15: "Fifteen",
+   16: "Sixteen",
+   17: "Seventeen",
+   18: "Eighteen",
+   19: "Nineteen",
+   20: "Twenty",
+   30: "Thirty",
+   40: "Forty",
+   50: "Fifty",
+   60: "Sixty",
+   70: "Seventy",
+   80: "Eighty",
+   90: "Ninety"
+}
+
+
+def num_to_words(number):
+  global WORD_DICT
+  if number < 20:
+    return WORD_DICT[number]
+  elif number < 100:
+    temp = {
+    2: "Twenty",
+   3: "Thirty",
+   4: "Forty",
+   5: "Fifty",
+   6: "Sixty",
+   7: "Seventy",
+   8: "Eighty",
+   9: "Ninety"
+    }
+    res = temp[number // 10]
+    if number % 10 != 0:
+      res += num_to_words(number % 10)
+    return res      
+  elif number < 1000:
+    res  = num_to_words(number // 100) + 'Hundred'
+    if number % 100 != 0:
+      res += num_to_words(number % 100)
+    return res
+  elif number < 1000000:
+    res = num_to_words(number // 1000) + 'Thousand'
+    if number % 1000 != 0:
+      res += num_to_words(number % 1000)
+    return res
+  elif number < 1000000000:
+    res = num_to_words(number // 1000000) + "Million"
+    if number % 1000000 != 0:
+      res += num_to_words(number % 1000000)
+    return res
+  else: 
+    res = num_to_words(number // 1000000000) + "Billion"
+    if number % 1000000000 != 0:
+      res += num_to_words(number % 1000000000)
+    return res
+
+for ii in open(sys.argv[1], 'r').readlines():
+  print num_to_words(int(ii.strip())) + "Dollars"
+  
