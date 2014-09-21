@@ -8,6 +8,8 @@ class Node(object):
 class Stack(object):
   def __init__(self):
     self.top = None
+    self.count = 0
+
   def push(self, value):
     if self.top == None:
       self.top = Node(value)
@@ -15,6 +17,8 @@ class Stack(object):
       temp = Node(value)
       temp.bottom = self.top
       self.top = temp
+    self.count += 1
+  
   def pop(self):
     if self.top == None:
       return None
@@ -22,6 +26,7 @@ class Stack(object):
       temp = self.top.value
       self.top = self.top.bottom
       return temp
+    self.count -= 1
 
   def printStack(self):
     current = self.top
