@@ -1,0 +1,43 @@
+import sys
+
+def bats_challange(length, safe_dis, pos):
+  min_pos = min(pos)
+  max_pos = max(pos)
+  no_of_bats = 0
+  for ii in range(min_pos - 1, 6, -safe_dis):
+    no_of_bats += 1
+    print "1 bat added from min_pos to wall"
+  for ii in range(max_pos + 1, length - 6, safe_dis):
+    no_of_bats += 1
+    print "1 bat added from max_pos to wall"
+  for ii in range(min_pos + 1, max_pos, safe_dis):
+    flag = 0
+    if ii not in pos:
+      for el in range(ii - (safe_dis - 1), ii):
+        if el in pos:
+          flag = 1
+          break
+      if flag != 1:
+        for el in range(ii + 1, ii + (safe_dis - 1)):
+          if el in pos:
+            flag = 1
+            break
+      if flag == 1:
+        continue
+      else:
+        no_of_bats += 1
+        print "bat added from between existing position"
+  print "===================="
+  print "===================="
+  return no_of_bats
+
+def main():
+  fp = open(sys.argv[1]).readlines()
+  for lines in fp:
+    lines = map(int, lines.strip().split(" "))
+    if lines[2] == 0:
+      lines += [0, 0]
+    print bats_challange(lines[0], lines[1], lines[3:])
+
+if __name__ == "__main__":
+  main()
