@@ -1,0 +1,27 @@
+#!/usr/bin/python
+
+"""
+Find the max sum of continuous terms in the sequence. The basic idea is have two variables max_temp and max_perm. Both initialized to zero. Start iterating through the list and update max_perm everytime max_temp is greater than it. If max_temp goes negative, make it zero again. 
+"""
+
+import sys
+
+def max_subseq(array):
+  max_perm = 0
+  max_temp = 0
+  for xx in array:
+    max_temp += xx
+    if max_temp < 0:
+      max_temp = 0
+    if max_temp > max_perm:
+      max_perm = max_temp
+  if max_perm == 0:
+    return max(array)
+  return max_perm
+
+def main():
+  for line in open(sys.argv[1], 'r').readlines():
+    print max_subseq(map(int, line.strip().split(",")))
+
+if __name__ == "__main__":
+  main()
