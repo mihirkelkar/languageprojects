@@ -1,20 +1,24 @@
 We deal with the ase of single rotation only in two cases. 
 
 1) An element is added to the left most subtree of the left subtree of the root. 
-		          Root
-		        /     \
+		          
+                          Root
+		         /   \
                       K1       C
                      /  \            
                     A    B
                   /
-            Inserted Node
-    then we can do a L-L Rotation to make the tree like this. 
+            Inserted 
+              Node
+    
+
+then we can do a L-L Rotation to make the tree like this. 
   
                            K1     
-                        /     \
-                       A        Root
-		     /         /    \
-		 Inserted     B	     C
+                          /  \
+                         A    Root
+		        /    /  \
+		 Inserted   B	 C
                    Node. 
 
 
