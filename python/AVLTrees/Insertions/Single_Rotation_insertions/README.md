@@ -17,8 +17,8 @@ then we can do a L-L Rotation to make the tree like this.
                            K1     
                           /  \
                          A    Root
-		        /    /  \
-		 Inserted   B	 C
+                        /    /  \
+                 Inserted   B    C
                    Node. 
 
 
