@@ -2,9 +2,9 @@ We deal with the ase of single rotation only in two cases.
 
 1) An element is added to the left most subtree of the left subtree of the root. 
 		          
-                          Root
-		         /   \
-                      K1       C
+                        Root
+                       /   \
+                      K1    C
                      /  \            
                     A    B
                   /
