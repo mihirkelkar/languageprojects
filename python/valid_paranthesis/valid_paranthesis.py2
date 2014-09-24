@@ -1,0 +1,30 @@
+#!/usr/bin/python
+import sys
+
+lead_paranthesis = list()
+
+def valid_paranthesis(string):
+  global lead_paranthesis
+  valid_paran = {
+		"}" : "{",
+                ")" : "(",
+                "]" : "["
+                }
+  for ii in valid_paran.items():
+    if string.count(ii[0]) != string.count(ii[1]):
+      return False
+  for ii in string:
+    if ii == "(" or ii == "{" or ii == "[":
+      lead_paranthesis.insert(0, ii)
+    elif ii == ")" or ii == "}" or ii == "]":
+      lead  = lead_paranthesis.pop(0) 
+      if lead != valid_paran[ii]:
+        return False
+  return True
+
+def main():
+  for line in open(sys.argv[1], 'r').readlines():
+    print valid_paranthesis(line.strip())
+
+if __name__ == "__main__":
+  main()

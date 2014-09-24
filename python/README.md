@@ -1,3 +1,11 @@
-Check if two given strings are anagrams of each other or not. 
+Assumptions:
 
-A good method would be to make sure to take char count of al charecters and make sure that both strings have the same character count. 
+1) Points like (1,1,0), (1,1,1), (1,1,2) can exist simultaneously which is why I always do a 2-d mapping 
+  first. This add to time complexity
+
+2) If points forming a lake are co-linear. Their area is equal to the number of points
+
+3) IN THE THIRD PROBLEM , LAKES DONT EXIST AND ALL POINTS ARE POTENTIALLY "DRIVEABLE"
+
+Steps to run:
+ python lakes.py

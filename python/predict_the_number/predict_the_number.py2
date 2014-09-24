@@ -1,0 +1,26 @@
+import sys
+
+key_dict = {}
+change_map = {'0': '1', '1': '2', '2': '0'}
+
+def predict_the_number(ip):
+  global key_dict
+  global change_map
+  temp = '0'
+  while len(temp) < ip + 1:
+    try:
+      temp += key_dict[temp] 
+    except:
+      string = ''
+      for ii in temp:
+        string += change_map[ii]
+      key_dict[temp] = string
+      temp += string
+  print temp[ip]
+
+def main():
+  for lines in open(sys.argv[1], 'r').readlines():
+    predict_the_number(int(lines.strip()))   
+
+if __name__ == "__main__":
+  main()     
