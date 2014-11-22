@@ -1,0 +1,14 @@
+Given a source word, target word and an English Dictionary, transform the source word to ttarget bu changing / adding/  removing 1 character at a time while all inrtermediate words being valid english words. Return the transformation chain which has the smalles number of intermediate words. 
+
+The idea is to iterate over a dictionary of words and create an adjacency python defualt dict
+. 
+
+Eg. Like
+for ii in 'abc...xyz':
+  for letter in len(word)
+    remove char
+    add a char in the word
+    replace a char
+
+
+Now, do a bfs, maintain list of visited words to keep a track of cycles. The BFS is guaranteed to give you the shortest path. 
