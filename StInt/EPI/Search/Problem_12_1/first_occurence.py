@@ -1,16 +1,17 @@
 def return_first_occurence(array, key):
   left = 0
   right = len(array) -1 
-  while(left < right):
+  while(left <= right):
     middle = (left + right) / 2
     if array[middle] < key:
-      left = middle
+      left = middle + 1
     elif array[middle] > key:
-      right = middle
+      right = middle - 1
     elif array[middle] == key:
       while(array[middle - 1] == array[middle]):
         middle = middle - 1
       return middle
+  return -1
 
 
 def main():
