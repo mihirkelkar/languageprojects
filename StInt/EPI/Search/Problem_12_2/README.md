@@ -1,0 +1,1 @@
+Design an efficient algorithm that takes in a sorted array as an input and a key K , and finds the index of the first occurence of an element greater than K. Return -1 if every element is greater than or equal to k. 
