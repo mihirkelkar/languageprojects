@@ -1,0 +1,24 @@
+"""
+Design a code for the secret santa game where one person buys a gift for only one person in the office such that evey one gets a gift. 
+"""
+import random
+
+people = list()
+while True:
+  name = raw_input()
+  if name == "end":
+    break
+  people.append((name, 0))
+
+for ii in range(len(people)):
+ while True:
+   temp = random.choice([people[:ii] + people[ii + 1:]])
+   if temp[1] == 0:
+     people[ii][1I] = temp[0]
+     break
+   else:
+     continue
+   print people
+   print "----"
+
+print people
